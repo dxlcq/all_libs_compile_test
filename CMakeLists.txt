@@ -15,7 +15,7 @@ endif()
 # cyclonedds 构建
 ExternalProject_Add(cyclonedds
     PREFIX ${CMAKE_BINARY_DIR}/cyclonedds
-    SOURCE_DIR ${CMAKE_SOURCE_DIR}/libs/cyclonedds-0.10.5
+    SOURCE_DIR ${CMAKE_SOURCE_DIR}/libs/cyclonedds
     CMAKE_ARGS
         -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/cyclonedds/install
 )
@@ -24,7 +24,7 @@ ExternalProject_Add(cyclonedds
 ExternalProject_Add(cyclonedds-cxx
     DEPENDS cyclonedds
     PREFIX ${CMAKE_BINARY_DIR}/cyclonedds-cxx
-    SOURCE_DIR ${CMAKE_SOURCE_DIR}/libs/cyclonedds-cxx-0.10.5
+    SOURCE_DIR ${CMAKE_SOURCE_DIR}/libs/cyclonedds-cxx
     CMAKE_ARGS 
         -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/cyclonedds-cxx/install
         -DCycloneDDS_DIR=${CMAKE_BINARY_DIR}/cyclonedds/install/${LIB_DIR}/cmake/CycloneDDS
