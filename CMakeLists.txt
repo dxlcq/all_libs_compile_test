@@ -41,3 +41,7 @@ ExternalProject_Add(cyclonedds-ttt
         -DCycloneDDS_IDL_COMPILER=${CMAKE_BINARY_DIR}/cyclonedds/install/bin/idlc
     INSTALL_COMMAND ""
 )
+
+# taskflow
+set(TASKFLOW_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/libs/taskflow-3.9.0)
+add_subdirectory(taskflow ${CMAKE_BINARY_DIR}/taskflow)
