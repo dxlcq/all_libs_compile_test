@@ -1,3 +1,6 @@
+cmake_minimum_required(VERSION 3.16)
+project(tttt-subprocess VERSION 1.0.0.0421 LANGUAGES CXX)
+
 find_package(CycloneDDS-CXX REQUIRED)
 idlcxx_generate(TARGET helloworlddata FILES HelloWorldData.idl WARNINGS no-implicit-extensibility)
 
