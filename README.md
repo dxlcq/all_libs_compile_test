@@ -8,6 +8,10 @@
 
 * [subprocess](https://github.com/benman64/subprocess/tags)
 
+* [rocksdb](https://github.com/facebook/rocksdb/tags)
+
+    * `apt install libgflags-dev zlib1g-dev libbz2-dev liblz4-dev libsnappy-dev libzstd-dev`
+
 下载 `tar.gz`，解压至 `libs`，然后 `cmake` 
 
 ```bash

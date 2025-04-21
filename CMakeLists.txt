@@ -33,6 +33,14 @@ ExternalProject_Add(cyclonedds-cxx
 # subprocess 构建
 add_subdirectory(libs/subprocess ${CMAKE_BINARY_DIR}/subprocess)
 
+# rocksdb 构建
+set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)           # 设置构建类型为 Release
+set(WITH_GFLAGS OFF CACHE BOOL "build with gflags" FORCE)               # 关闭 gflags 依赖
+set(PORTABLE ON CACHE BOOL "build a portable binary" FORCE)             # 如需更好的兼容性
+set(ROCKSDB_BUILD_SHARED OFF CACHE BOOL "build shared library" FORCE)   # 仅构建静态库
+set(WITH_TESTS OFF CACHE BOOL "build with tests" FORCE)                 # 不构建测试
+set(WITH_TOOLS OFF CACHE BOOL "build with tools" FORCE)                 # 不构建工具
+add_subdirectory(libs/rocksdb ${CMAKE_BINARY_DIR}/rocksdb)
 
 # ---------------------------------------------------------
 
@@ -45,7 +53,6 @@ ExternalProject_Add(tttt-cyclonedds
     CMAKE_ARGS
         -DCycloneDDS_DIR=${CMAKE_BINARY_DIR}/cyclonedds/install/${LIB_DIR}/cmake/CycloneDDS
         -DCycloneDDS-CXX_DIR=${CMAKE_BINARY_DIR}/cyclonedds-cxx/install/${LIB_DIR}/cmake/CycloneDDS-CXX
-        -DCycloneDDS_IDL_COMPILER=${CMAKE_BINARY_DIR}/cyclonedds/install/bin/idlc
     INSTALL_COMMAND ""
 )
 
