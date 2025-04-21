@@ -12,7 +12,7 @@ else()
     set(LIB_DIR "lib")
 endif()
 
-# cyclonedds构建
+# cyclonedds 构建
 ExternalProject_Add(cyclonedds
     PREFIX ${CMAKE_BINARY_DIR}/cyclonedds
     SOURCE_DIR ${CMAKE_SOURCE_DIR}/libs/cyclonedds-0.10.5
@@ -30,11 +30,18 @@ ExternalProject_Add(cyclonedds-cxx
         -DCycloneDDS_DIR=${CMAKE_BINARY_DIR}/cyclonedds/install/${LIB_DIR}/cmake/CycloneDDS
 )
 
-# cyclonedds-test 构建，依赖于 cyclonedds-cxx
-ExternalProject_Add(cyclonedds-ttt
+# subprocess 构建
+add_subdirectory(libs/subprocess ${CMAKE_BINARY_DIR}/subprocess)
+
+
+# ---------------------------------------------------------
+
+
+# tttt-cyclonedds，依赖于 cyclonedds-cxx
+ExternalProject_Add(tttt-cyclonedds
     DEPENDS cyclonedds-cxx
-    PREFIX ${CMAKE_BINARY_DIR}/cyclonedds-ttt
-    SOURCE_DIR ${CMAKE_SOURCE_DIR}/cyclonedds
+    PREFIX ${CMAKE_BINARY_DIR}/tttt-cyclonedds
+    SOURCE_DIR ${CMAKE_SOURCE_DIR}/tttt-cyclonedds
     CMAKE_ARGS
         -DCycloneDDS_DIR=${CMAKE_BINARY_DIR}/cyclonedds/install/${LIB_DIR}/cmake/CycloneDDS
         -DCycloneDDS-CXX_DIR=${CMAKE_BINARY_DIR}/cyclonedds-cxx/install/${LIB_DIR}/cmake/CycloneDDS-CXX
@@ -42,6 +49,10 @@ ExternalProject_Add(cyclonedds-ttt
     INSTALL_COMMAND ""
 )
 
-# taskflow
-set(TASKFLOW_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/libs/taskflow-3.9.0)
-add_subdirectory(taskflow ${CMAKE_BINARY_DIR}/taskflow)
+# tttt-taskflow
+set(TASKFLOW_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/libs/taskflow)
+add_subdirectory(tttt-taskflow ${CMAKE_BINARY_DIR}/tttt-taskflow)
+
+# tttt-subprocess
+set(SUBPROCESS_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/libs/subprocess/src/cpp)
+add_subdirectory(tttt-subprocess ${CMAKE_BINARY_DIR}/tttt-subprocess)
