@@ -36,14 +36,13 @@ add_subdirectory(libs/subprocess ${CMAKE_BINARY_DIR}/subprocess)
 # rocksdb 构建
 set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)           # 设置构建类型为 Release
 set(WITH_GFLAGS OFF CACHE BOOL "build with gflags" FORCE)               # 关闭 gflags 依赖
-set(PORTABLE ON CACHE BOOL "build a portable binary" FORCE)             # 如需更好的兼容性
+set(PORTABLE ON CACHE BOOL "build a portable binary" FORCE)             # 更好的兼容性
 set(ROCKSDB_BUILD_SHARED OFF CACHE BOOL "build shared library" FORCE)   # 仅构建静态库
 set(WITH_TESTS OFF CACHE BOOL "build with tests" FORCE)                 # 不构建测试
 set(WITH_TOOLS OFF CACHE BOOL "build with tools" FORCE)                 # 不构建工具
 add_subdirectory(libs/rocksdb ${CMAKE_BINARY_DIR}/rocksdb)
 
 # ---------------------------------------------------------
-
 
 # tttt-cyclonedds，依赖于 cyclonedds-cxx
 ExternalProject_Add(tttt-cyclonedds
@@ -61,5 +60,7 @@ set(TASKFLOW_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/libs/taskflow)
 add_subdirectory(tttt-taskflow ${CMAKE_BINARY_DIR}/tttt-taskflow)
 
 # tttt-subprocess
-set(SUBPROCESS_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/libs/subprocess/src/cpp)
 add_subdirectory(tttt-subprocess ${CMAKE_BINARY_DIR}/tttt-subprocess)
+
+# tttt-rocksdb
+add_subdirectory(tttt-rocksdb ${CMAKE_BINARY_DIR}/tttt-rocksdb)
