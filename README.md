@@ -12,6 +12,8 @@
 
     * `apt install libgflags-dev zlib1g-dev libbz2-dev liblz4-dev libsnappy-dev libzstd-dev`
 
+* [ssdb]()
+
 下载 `tar.gz`，解压至 `libs`，然后 `cmake` 
 
 ```bash
